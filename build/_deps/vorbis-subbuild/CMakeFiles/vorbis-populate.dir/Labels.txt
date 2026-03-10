@@ -1,0 +1,14 @@
+# Target labels
+ vorbis-populate
+# Source files and their labels
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/vorbis-populate
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/6569a8bf476564d8340ae772e327e15e/vorbis-populate.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/648eed41c8f54dcb655b148ce92d1c15/vorbis-populate-complete.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/a4a6209a187112cd4bcd8d81f2fd3c9c/vorbis-populate-build.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/a4a6209a187112cd4bcd8d81f2fd3c9c/vorbis-populate-configure.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/a4a6209a187112cd4bcd8d81f2fd3c9c/vorbis-populate-download.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/a4a6209a187112cd4bcd8d81f2fd3c9c/vorbis-populate-install.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/a4a6209a187112cd4bcd8d81f2fd3c9c/vorbis-populate-mkdir.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/a4a6209a187112cd4bcd8d81f2fd3c9c/vorbis-populate-patch.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/a4a6209a187112cd4bcd8d81f2fd3c9c/vorbis-populate-test.rule
+D:/coding/HelloSFML/build/_deps/vorbis-subbuild/CMakeFiles/a4a6209a187112cd4bcd8d81f2fd3c9c/vorbis-populate-update.rule

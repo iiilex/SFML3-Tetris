@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\a4a6209a187112cd4bcd8d81f2fd3c9c\vorbis-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\a4a6209a187112cd4bcd8d81f2fd3c9c\vorbis-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\a4a6209a187112cd4bcd8d81f2fd3c9c\vorbis-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\a4a6209a187112cd4bcd8d81f2fd3c9c\vorbis-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\a4a6209a187112cd4bcd8d81f2fd3c9c\vorbis-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\a4a6209a187112cd4bcd8d81f2fd3c9c\vorbis-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\a4a6209a187112cd4bcd8d81f2fd3c9c\vorbis-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\a4a6209a187112cd4bcd8d81f2fd3c9c\vorbis-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\648eed41c8f54dcb655b148ce92d1c15\vorbis-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\6569a8bf476564d8340ae772e327e15e\vorbis-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\coding\HelloSFML\build\_deps\vorbis-subbuild\CMakeFiles\vorbis-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9AACBA3C-A318-3286-90CB-22B1770A1186}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "HelloSFML.dir\\Debug\\block.obj",
+            "outputs": [
+                "D:\\coding\\HelloSFML\\build\\HelloSFML.dir\\Debug\\vc143.pdb",
+                "HelloSFML.dir\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}

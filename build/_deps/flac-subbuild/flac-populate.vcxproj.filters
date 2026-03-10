@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0526269efa7ecc7efce94391bb1bafcd\flac-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0526269efa7ecc7efce94391bb1bafcd\flac-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0526269efa7ecc7efce94391bb1bafcd\flac-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0526269efa7ecc7efce94391bb1bafcd\flac-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0526269efa7ecc7efce94391bb1bafcd\flac-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0526269efa7ecc7efce94391bb1bafcd\flac-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0526269efa7ecc7efce94391bb1bafcd\flac-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0526269efa7ecc7efce94391bb1bafcd\flac-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\0c58f15e0fcc24fc4ef54d790d1197f4\flac-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\c0c1f8465ae8303a412f955e0d7ebf9a\flac-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\coding\HelloSFML\build\_deps\flac-subbuild\CMakeFiles\flac-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{7FAAE6DD-49E5-38EB-A837-6FD7DA8EDB4C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+"filename", "language", "C++", "comment", "blank", "total"
+"d:\coding\HelloSFML\include\block.h", "C++", -23, -28, -4, -55
+"d:\coding\HelloSFML\include\board.h", "C++", -26, -10, -8, -44
+"d:\coding\HelloSFML\include\game.h", "C++", -29, -1, -7, -37
+"d:\coding\HelloSFML\include\global.h", "C++", -22, -8, -8, -38
+"d:\coding\HelloSFML\src\block.cpp", "C++", 179, 0, 15, 194
+"d:\coding\HelloSFML\src\board.cpp", "C++", 54, 0, 10, 64
+"d:\coding\HelloSFML\src\game.cpp", "C++", 229, 29, 25, 283
+"Total", "-", 362, -18, 23, 367
