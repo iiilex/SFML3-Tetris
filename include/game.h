@@ -15,7 +15,6 @@ class Game
         std::uniform_int_distribution<> distrib;
 
         sf::RenderWindow window;
-        bool is_paused;
 
         sf::Music bgm;
         sf::SoundBuffer fx;

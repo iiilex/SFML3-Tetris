@@ -1,5 +1,0 @@
-# CMake generation dependency list for this directory.
-D:/Program Files/CMake/share/cmake-4.3/Modules/CMakeParseArguments.cmake
-D:/coding/HelloSFML/build/_deps/sfml-src/cmake/CompilerWarnings.cmake
-D:/coding/HelloSFML/build/_deps/sfml-src/cmake/Macros.cmake
-D:/coding/HelloSFML/build/_deps/sfml-src/src/SFML/CMakeLists.txt

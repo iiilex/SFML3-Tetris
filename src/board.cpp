@@ -2,7 +2,10 @@
 #include<global.h>
 #include<board.h>
 
-ScoreBoard::ScoreBoard() : score(0), font("./fonts/arial.ttf"), explains(font), scores(font)
+ScoreBoard::ScoreBoard() : score(0), 
+font("./fonts/digital-7.ttf"), 
+explains(font), 
+scores(font)
 {
     explains.setString("Score:");
     explains.setCharacterSize(70);
@@ -33,7 +36,10 @@ void ScoreBoard::addScore(int layerClearCount)
     scores.setPosition({900 - scoresBounds.size.x, 200});
 }
 
-SpeedBoard::SpeedBoard() : font("./fonts/arial.ttf"), explains(font), speed(font)
+SpeedBoard::SpeedBoard() : 
+font("./fonts/digital-7.ttf"), 
+explains(font), 
+speed(font)
 {
     explains.setString("Speed:");
     explains.setCharacterSize(70);

@@ -67,7 +67,15 @@ BlockType Game::getType()
     }
 }
 
-Game::Game() : gen(std::random_device{}()), distrib(1, 7), window(sf::VideoMode({window_x, window_y}), "Tetris", sf::Style::Titlebar | sf::Style::Close), bgm("./music/bgm.wav"), fx("./music/remove_fx.wav"), remove_fx(fx), is_paused(false), scoreboard(), speedboard(), line(sf::PrimitiveType::Lines, 2)
+Game::Game() : 
+gen(std::random_device{}()), distrib(1, 7), 
+window(sf::VideoMode({window_x, window_y}), "Tetris", sf::Style::Titlebar | sf::Style::Close),
+bgm("./music/bgm.wav"), 
+fx("./music/remove_fx.wav"), 
+remove_fx(fx),  
+scoreboard(), 
+speedboard(), 
+line(sf::PrimitiveType::Lines, 2)
 {
     remove_fx.setVolume(100.f);
     for (int x = 0; x < gameSet_x; x++)
@@ -197,6 +205,7 @@ void Game::run()
 
     bool is_mute = false;
     bool is_end = false;
+    bool is_paused = false;
 
     while (window.isOpen())
     {
@@ -218,14 +227,36 @@ void Game::run()
             continue;
         }
 
+        if(is_paused)
+        {
+            while (const std::optional event = window.pollEvent())
+            {
+                if (event->is<sf::Event::Closed>())
+                    window.close();
+                if (const auto *keyPressed = event->getIf<sf::Event::KeyPressed>())
+                {
+                    if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
+                        window.close();
+                    if (keyPressed->scancode == sf::Keyboard::Scancode::P)
+                        {
+                            bgm.play();
+                            timer = 0;
+                            clock.reset();
+                            is_paused = false;
+                        }
+                }
+            }
+            drawAll();
+            continue;
+        }
+
         if (!MyBlock.has_value())
         {
             auto type = getType();
             MyBlock.emplace(type);
             Shadow.emplace(type, true);
             Shadow->setColor({255, 255, 255, 100});
-            while (Shadow->fall())
-                ;
+            while (Shadow->fall());
             blockCnt++;
             if (blockCnt == levelUpCnt)
             {
@@ -244,25 +275,27 @@ void Game::run()
             {
                 if (keyPressed->scancode == sf::Keyboard::Scancode::P)
                 {
-                    is_paused = !is_paused;
+                    is_paused = true;
                     if (is_paused)
+                    {
                         bgm.pause();
-                    else
-                        bgm.play();
+                    }
                 }
                 if (is_paused)
+                {
                     break;
+                }
 
                 if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
                     window.close();
-                if (keyPressed->scancode == sf::Keyboard::Scancode::Left)
+                if (keyPressed->scancode == sf::Keyboard::Scancode::Left || keyPressed->scancode == sf::Keyboard::Scancode::A)
                 {
                     if (MyBlock.has_value())
                         MyBlock->move(-1);
                     if (Shadow.has_value())
                         Shadow->updateShadow(MyBlock.value());
                 }
-                if (keyPressed->scancode == sf::Keyboard::Scancode::Right)
+                if (keyPressed->scancode == sf::Keyboard::Scancode::Right || keyPressed->scancode == sf::Keyboard::Scancode::D)
                 {
                     if (MyBlock.has_value())
                         MyBlock->move(1);
@@ -278,14 +311,14 @@ void Game::run()
                     Shadow.reset();
                     is_quick_fall = true;
                 }
-                if (keyPressed->scancode == sf::Keyboard::Scancode::Up)
+                if (keyPressed->scancode == sf::Keyboard::Scancode::Up || keyPressed->scancode == sf::Keyboard::Scancode::W)
                 {
                     if(MyBlock.has_value())
                         MyBlock->rotate();
                     if (Shadow.has_value())
                         Shadow->updateShadow(MyBlock.value());
                 }
-                if (keyPressed->scancode == sf::Keyboard::Scancode::Down)
+                if (keyPressed->scancode == sf::Keyboard::Scancode::Down || keyPressed->scancode == sf::Keyboard::Scancode::S)
                     if(MyBlock.has_value())
                         MyBlock->fall();
 
@@ -310,7 +343,7 @@ void Game::run()
         timer += deltatime.asSeconds();
         while (timer >= interval)
         {
-            if (is_paused || is_quick_fall)
+            if (is_quick_fall)
             {
                 timer = 0;
                 break;
@@ -330,10 +363,6 @@ void Game::run()
             }
             timer -= interval;
         }
-
-        if (is_paused)
-            continue;
-
         drawAll();
     }
 }
