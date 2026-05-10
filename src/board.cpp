@@ -18,6 +18,18 @@ scores(font)
     scores.setPosition({900 - scoresBounds.size.x, 200});
 }
 
+void ScoreBoard::clear()
+{
+    score = 0;
+    scores.setString("0");
+}
+
+void SpeedBoard::clear()
+{
+    velocity = 1;
+    speed.setString("0");
+}
+
 void ScoreBoard::draw(sf::RenderWindow &window)
 {
     window.draw(explains);

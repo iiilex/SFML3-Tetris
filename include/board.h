@@ -26,6 +26,7 @@ class ScoreBoard
         ScoreBoard();
         void addScore(int layerClearCount);
         void draw(sf::RenderWindow &window);
+        void clear();
 
 };
 
@@ -40,5 +41,6 @@ class SpeedBoard
         SpeedBoard();
         void addSpeed();
         void draw(sf::RenderWindow &window);
+        void clear();
 };
 
