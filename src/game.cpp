@@ -180,16 +180,14 @@ void Game::layerClear(int layerId)
             colorSet[x][layerId].a = 0;
         drawAll();
 
-        while (clock.getElapsedTime().asSeconds() < 0.05f)
-            ;
+        while (clock.getElapsedTime().asSeconds() < 0.05f);
         clock.restart();
 
         for (int x = 0; x < gameSet_x; x++)
             colorSet[x][layerId].a = 255;
         drawAll();
 
-        while (clock.getElapsedTime().asSeconds() < 0.05f)
-            ;
+        while (clock.getElapsedTime().asSeconds() < 0.05f);
         clock.restart();
     }
 
@@ -244,6 +242,9 @@ void Game::run()
             gameSet[x][y] = 0;
     for (int y = 0; y < gameSet_y; y++)
         layerCount[y] = 0;
+
+    speedboard.clear();
+    scoreboard.clear();
 
     bgm.play();
 

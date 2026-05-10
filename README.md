@@ -1,3 +1,7 @@
-It's a terrible work, with many ambiguous identities and a confused structure.
-Anyway, it's the first step for me to try this nice library for my new project.
-Maybe I'll fix it and get it more clear?
+基于SFML3的俄罗斯方块
+
+其实这是本人三月初用来熟悉SFML3操作的练手作。一开始想做一个很大的项目，但心有余而力不足，那个项目的四分之一就已经比这个的体量更大，并且个人兴趣已经不在游戏开发上了，只能作罢，用这个改改当作业交了。
+
+唯一有些自豪的就是这个项目几乎没有AI的参与。如果大量使用的话，肯定能做得比现在好得多;不过我更愿意体验一次从零开始慢慢构建一个项目的过程。花好几个整天查资料，摸索，构建，这是当下时代少有的乐趣。
+
+互评的同学和助教，使用VSCode打开文件夹，用terminal输入 cmake -B build，cmakelist会自动下载SFML3所需要的库(或许需要梯子)。build结束就可以尝试了。
