@@ -169,7 +169,7 @@ void Game::fix(Block &block)
     scoreboard.addScore(layerClearCount);
 }
 
-void Game::layerClear(int layerId)
+void Game::layerClear(int layerId) // 消除一层
 {
     Shadow->setColor({0, 0, 0, 0});
     MyBlock->setColor({0, 0, 0, 0});
@@ -218,9 +218,10 @@ void Game::draw(sf::RenderWindow &window)
             shape.setPosition(draw_position);
             window.draw(shape);
         }
+    // 绘画游戏区域
 }
 
-void Game::run()
+void Game::run() //正式开始游戏
 {
 
     window.setFramerateLimit(80);

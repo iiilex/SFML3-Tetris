@@ -27,7 +27,7 @@ void ScoreBoard::clear()
 void SpeedBoard::clear()
 {
     velocity = 1;
-    speed.setString("0");
+    speed.setString("1");
 }
 
 void ScoreBoard::draw(sf::RenderWindow &window)

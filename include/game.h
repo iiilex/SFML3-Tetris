@@ -21,13 +21,14 @@ class Game
 {
     protected:
         std::mt19937 gen;
-        std::uniform_int_distribution<> distrib;
+        std::uniform_int_distribution<> distrib; // 随机数
 
-        sf::RenderWindow window;
+        sf::RenderWindow window; //窗口
 
         sf::Music bgm;
         sf::SoundBuffer fx;
         sf::Sound remove_fx;
+        // bgm 和 音效
 
         sf::Color colorSet[gameSet_x][gameSet_y];
         int layerCount[gameSet_y]; // 每一层的方块个数
@@ -35,13 +36,16 @@ class Game
 
         ScoreBoard scoreboard;
         SpeedBoard speedboard;
+        // 两种计分板
         
         sf::Font EngFont;
         sf::Font CnFont;
         sf::Text endText;
+        //字体和文字
 
         std::optional<Block> MyBlock;
         std::optional<Block> Shadow;
+        // 俄罗斯方块，和对应的阴影
 
         sf::VertexArray line;
 
@@ -61,6 +65,8 @@ class Game
         sf::Sprite reset;
         sf::Sprite menu;
 
+        //按钮和背景
+
     public:
         gameState currentState;
 
@@ -69,9 +75,9 @@ class Game
         void run();
         void fail();
 
-        void fix(Block &block);
-        void draw(sf::RenderWindow &window);
-        BlockType getType();
+        void fix(Block &block); // 方块固定
+        void draw(sf::RenderWindow &window); //绘图
+        BlockType getType(); 
         void layerClear(int layerId);
         void drawAll();
 

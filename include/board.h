@@ -5,8 +5,6 @@
 
     2. 速度板 SpeedBoard
 
-    3. 介绍板 GuideBoard
-
 */
 
 #pragma once
