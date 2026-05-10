@@ -41,3 +41,4 @@ class SpeedBoard
         void addSpeed();
         void draw(sf::RenderWindow &window);
 };
+

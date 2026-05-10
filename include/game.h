@@ -8,6 +8,15 @@
 #include<global.h>
 #include<block.h>
 #include<board.h>
+
+enum class gameState
+{
+    Home,
+    Run,
+    Fail,
+    History
+};
+
 class Game
 {
     protected:
@@ -26,17 +35,45 @@ class Game
 
         ScoreBoard scoreboard;
         SpeedBoard speedboard;
+        
+        sf::Font EngFont;
+        sf::Font CnFont;
+        sf::Text endText;
 
         std::optional<Block> MyBlock;
         std::optional<Block> Shadow;
 
         sf::VertexArray line;
+
+        sf::Texture startBgTexture;
+        sf::Texture BgTexture;
+
+        sf::Sprite startBg;
+        sf::Sprite Bg;
+
+        sf::Texture startTexture;
+        sf::Texture historyTexture;
+        sf::Texture resetTexture;
+        sf::Texture menuTexture;
+
+        sf::Sprite start;
+        sf::Sprite history;
+        sf::Sprite reset;
+        sf::Sprite menu;
+
     public:
+        gameState currentState;
+
         Game();
+        void home();
         void run();
+        void fail();
+
         void fix(Block &block);
         void draw(sf::RenderWindow &window);
         BlockType getType();
         void layerClear(int layerId);
         void drawAll();
+
+        bool isOpen();
 };

@@ -67,22 +67,66 @@ BlockType Game::getType()
     }
 }
 
-Game::Game() : 
-gen(std::random_device{}()), distrib(1, 7), 
-window(sf::VideoMode({window_x, window_y}), "Tetris", sf::Style::Titlebar | sf::Style::Close),
-bgm("./music/bgm.wav"), 
-fx("./music/remove_fx.wav"), 
-remove_fx(fx),  
-scoreboard(), 
-speedboard(), 
-line(sf::PrimitiveType::Lines, 2)
+Game::Game() : gen(std::random_device{}()), distrib(1, 7),
+
+               window(sf::VideoMode({window_x, window_y}), "Tetris", sf::Style::Titlebar | sf::Style::Close),
+
+               bgm("./music/bgm.wav"),
+               fx("./music/remove_fx.wav"),
+               remove_fx(fx),
+
+               scoreboard(),
+               speedboard(),
+
+               line(sf::PrimitiveType::Lines, 2),
+
+               EngFont("fonts/arial.ttf"),
+               CnFont("fonts/cn.ttf"),
+               endText(EngFont),
+
+               startBgTexture("pic/main.png"),
+               BgTexture("pic/bg.png"),
+               startBg(startBgTexture),
+               Bg(BgTexture),
+
+               startTexture("pic/start.png"),
+               resetTexture("pic/reset.png"),
+               menuTexture("pic/menu.png"),
+               historyTexture("pic/history.png"),
+
+               start(startTexture),
+               reset(resetTexture),
+               menu(menuTexture),
+               history(historyTexture),
+
+               currentState(gameState::Home)
 {
     remove_fx.setVolume(100.f);
+
     for (int x = 0; x < gameSet_x; x++)
         for (int y = 0; y < gameSet_y; y++)
             gameSet[x][y] = 0;
     for (int y = 0; y < gameSet_y; y++)
         layerCount[y] = 0;
+
+    endText.setString("You are died.");
+    endText.setFillColor(sf::Color::Red);
+    endText.setCharacterSize(70);
+    auto endTextBound = endText.getLocalBounds();
+    endText.setPosition({window_x / 2 - endTextBound.size.x / 2, window_y / 3 - endTextBound.size.y / 2});
+
+    bgm.setVolume(70.f);
+    bgm.setLooping(true);
+
+    start.setScale({0.15, 0.15});
+    history.setScale({0.15, 0.15});
+    reset.setScale({0.15, 0.15});
+    menu.setScale({0.15, 0.15});
+
+    start.setPosition({100, 820});
+    history.setPosition({600, 820});
+    reset.setPosition({100, 820});
+    menu.setPosition({600, 820});
 }
 
 void Game::fix(Block &block)
@@ -191,43 +235,27 @@ void Game::run()
     line[0].position = {gameSet_x * block_x + 1, 0.f};
     line[1].position = {gameSet_x * block_x + 1, window_y};
 
-    sf::Font MyFont("fonts/arial.ttf");
-    sf::Text endText(MyFont);
-    endText.setString("YOU ARE DIED!");
-    endText.setFillColor(sf::Color::Red);
-    endText.setCharacterSize(70);
-    auto endTextBound = endText.getLocalBounds();
-    endText.setPosition({window_x / 2 - endTextBound.size.x / 2, window_y / 2 - endTextBound.size.y / 2});
-
-    bgm.setVolume(70.f);
-    bgm.setLooping(true);
-    bgm.play();
-
     bool is_mute = false;
     bool is_end = false;
     bool is_paused = false;
+
+    for (int x = 0; x < gameSet_x; x++)
+        for (int y = 0; y < gameSet_y; y++)
+            gameSet[x][y] = 0;
+    for (int y = 0; y < gameSet_y; y++)
+        layerCount[y] = 0;
+
+    bgm.play();
 
     while (window.isOpen())
     {
         if (is_end)
         {
-            while (const std::optional event = window.pollEvent())
-            {
-                if (event->is<sf::Event::Closed>())
-                    window.close();
-                if (const auto *keyPressed = event->getIf<sf::Event::KeyPressed>())
-                    if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
-                        window.close();
-            }
-            window.clear();
-            window.draw(endText);
-            scoreboard.draw(window);
-            speedboard.draw(window);
-            window.display();
-            continue;
+            currentState = gameState::Fail;
+            break;
         }
 
-        if(is_paused)
+        if (is_paused)
         {
             while (const std::optional event = window.pollEvent())
             {
@@ -238,12 +266,12 @@ void Game::run()
                     if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
                         window.close();
                     if (keyPressed->scancode == sf::Keyboard::Scancode::P)
-                        {
-                            bgm.play();
-                            timer = 0;
-                            clock.reset();
-                            is_paused = false;
-                        }
+                    {
+                        bgm.play();
+                        timer = 0;
+                        clock.reset();
+                        is_paused = false;
+                    }
                 }
             }
             drawAll();
@@ -256,7 +284,8 @@ void Game::run()
             MyBlock.emplace(type);
             Shadow.emplace(type, true);
             Shadow->setColor({255, 255, 255, 100});
-            while (Shadow->fall());
+            while (Shadow->fall())
+                ;
             blockCnt++;
             if (blockCnt == levelUpCnt)
             {
@@ -305,7 +334,8 @@ void Game::run()
                 if (keyPressed->scancode == sf::Keyboard::Scancode::Space)
                 {
                     if (MyBlock.has_value())
-                        while (MyBlock->fall());
+                        while (MyBlock->fall())
+                            ;
                     fix(MyBlock.value());
                     MyBlock.reset();
                     Shadow.reset();
@@ -313,13 +343,13 @@ void Game::run()
                 }
                 if (keyPressed->scancode == sf::Keyboard::Scancode::Up || keyPressed->scancode == sf::Keyboard::Scancode::W)
                 {
-                    if(MyBlock.has_value())
+                    if (MyBlock.has_value())
                         MyBlock->rotate();
                     if (Shadow.has_value())
                         Shadow->updateShadow(MyBlock.value());
                 }
                 if (keyPressed->scancode == sf::Keyboard::Scancode::Down || keyPressed->scancode == sf::Keyboard::Scancode::S)
-                    if(MyBlock.has_value())
+                    if (MyBlock.has_value())
                         MyBlock->fall();
 
                 if (keyPressed->scancode == sf::Keyboard::Scancode::M)
@@ -367,9 +397,53 @@ void Game::run()
     }
 }
 
+void Game::fail()
+{
+    bool is_end = false;
+    while (window.isOpen() && !is_end)
+    {
+        while (const std::optional event = window.pollEvent())
+        {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+            if (const auto *keyPressed = event->getIf<sf::Event::KeyPressed>())
+                if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
+                    window.close();
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+            {
+                sf::Vector2i Pos = sf::Mouse::getPosition() - window.getPosition();
+                
+                sf::FloatRect menuBounds = menu.getGlobalBounds();
+                sf::FloatRect resetBounds = reset.getGlobalBounds();
+                menuBounds.size.y += 50;
+                resetBounds.size.y += 50;
+ 
+                if(resetBounds.contains(static_cast<sf::Vector2f>(Pos)))
+                {
+                    currentState = gameState::Run;
+                    is_end = true;
+                }
+                else if(menuBounds.contains(static_cast<sf::Vector2f>(Pos)))
+                {
+                    currentState = gameState::Home;
+                    is_end = true;
+                }
+            }
+        }
+        window.clear();
+        window.draw(endText);
+        scoreboard.draw(window);
+        speedboard.draw(window);
+        window.draw(reset);
+        window.draw(menu);
+        window.display();
+    }
+}
+
 void Game::drawAll()
 {
     window.clear();
+    window.draw(Bg);
     window.draw(line);
     scoreboard.draw(window);
     speedboard.draw(window);
@@ -379,4 +453,51 @@ void Game::drawAll()
         Shadow->draw(window);
     this->draw(window);
     window.display();
+}
+
+bool Game::isOpen()
+{
+    return window.isOpen();
+}
+
+void Game::home()
+{
+    bool is_end = false;
+
+    while (window.isOpen() && !is_end)
+    {
+        while (const std::optional event = window.pollEvent())
+        {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+            if (const auto *keyPressed = event->getIf<sf::Event::KeyPressed>())
+                if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
+                    window.close();
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+            {
+                sf::Vector2i Pos = sf::Mouse::getPosition() - window.getPosition();
+                
+                sf::FloatRect startBounds = start.getGlobalBounds();
+                sf::FloatRect historyBounds = history.getGlobalBounds();
+                startBounds.size.y += 50;
+                historyBounds.size.y += 50;
+ 
+                if(startBounds.contains(static_cast<sf::Vector2f>(Pos)))
+                {
+                    currentState = gameState::Run;
+                    is_end = true;
+                }
+                else if(historyBounds.contains(static_cast<sf::Vector2f>(Pos)))
+                {
+                    currentState = gameState::History;
+                    is_end = true;
+                }
+            }
+        }
+        window.clear();
+        window.draw(startBg);
+        window.draw(start);
+        window.draw(history);
+        window.display();
+    }
 }
