@@ -39,23 +39,23 @@ enum class BlockType
 class Block
 {
     protected:
-        bool blockSet[blockSet_x][blockSet_y];
-        bool is_shadow;
-        sf::Color color;
+        bool blockSet[blockSet_x][blockSet_y]; //用来构造方块的形状
+        bool is_shadow; // 是否为阴影
+        sf::Color color; // 方块的颜色
         sf::Vector2i position; // 虚拟格子左上角在棋盘中的坐标
-        BlockType myType;
+        BlockType myType; //  当前方块的种类
     public:
-        Block();
-        Block(const BlockType &type, bool flag = false);
-        bool fall();
-        bool move(int stride);
-        bool rotate();
-        void draw(sf::RenderWindow &window);
-        sf::Vector2i getPosition() const;
-        sf::Color  getColor() const;
-        BlockType getType();
-        void setColor(sf::Color newColor);
-        bool isExist(int x, int y) const;
-        bool getIsShadow();
-        void updateShadow(Block &block);
+        Block(); // 无参构造函数，防御性，常规情况不调用
+        Block(const BlockType &type, bool flag = false); // 有参构造函数，flag为true代表是阴影
+        bool fall(); // 下落1步
+        bool move(int stride); // 移动向右 stride 步，通过stride的符号控制正负
+        bool rotate(); // 顺时针旋转 90度
+        void draw(sf::RenderWindow &window); // 绘制
+        sf::Vector2i getPosition() const; // 当前位置
+        sf::Color  getColor() const; // 当前颜色
+        BlockType getType(); // 当前方块种类
+        void setColor(sf::Color newColor); // 设置颜色
+        bool isExist(int x, int y) const; // 辅助位置判断
+        bool getIsShadow(); // 是否为阴影
+        void updateShadow(Block &block); // 对于阴影的更新位置方法
 };

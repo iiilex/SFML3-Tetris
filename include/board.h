@@ -15,8 +15,8 @@
 class ScoreBoard
 {
     protected:
-        int score;
-        sf::Font font;
+        int score; 
+        sf::Font font; 
         sf::Text explains;
         sf::Text scores;
 

@@ -24,7 +24,7 @@ int main()
                 game.fail();
                 break;
             case gameState::History:
-                
+                game.home();
                 break;
         }
     }
